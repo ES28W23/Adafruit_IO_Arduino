@@ -20,11 +20,11 @@
 //   - Adafruit AirLift Shield -> https://www.adafruit.com/product/4285
 //   - Adafruit AirLift FeatherWing -> https://www.adafruit.com/product/4264
 
-#define WIFI_SSID "your_ssid"
-#define WIFI_PASS "your_pass"
+#define WIFI_SSID "Dartmouth Public"
+#define WIFI_PASS ""
 
 // uncomment the following line if you are using airlift
-// #define USE_AIRLIFT
+#define USE_AIRLIFT
 
 // uncomment the following line if you are using winc1500
 // #define USE_WINC1500
