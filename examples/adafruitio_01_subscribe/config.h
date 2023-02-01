@@ -20,6 +20,8 @@
 //   - Adafruit AirLift Shield -> https://www.adafruit.com/product/4285
 //   - Adafruit AirLift FeatherWing -> https://www.adafruit.com/product/4264
 
+#define AIO_DEBUG
+
 #define WIFI_SSID "Dartmouth Public"
 #define WIFI_PASS ""
 

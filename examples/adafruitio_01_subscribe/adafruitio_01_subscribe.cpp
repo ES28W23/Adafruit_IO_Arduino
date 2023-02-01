@@ -17,6 +17,8 @@
 // or ethernet clients.
 #include "config.h"
 
+#include "Arduino.h"
+
 /************************ Example Starts Here *******************************/
 
 // set up the 'counter' feed
@@ -26,6 +28,7 @@ void handleMessage( AdafruitIO_Data * );
 
 void setup() {
 
+	//pinMode(13, OUTPUT);
   // start the serial connection
   Serial.begin(9600);
 
@@ -33,9 +36,10 @@ void setup() {
   while(! Serial);
 
   Serial.print("Connecting to Adafruit IO");
+  delay(500);
 
   // start MQTT connection to io.adafruit.com
-  //io.connect();
+  io.connect();
 
   // set up a message handler for the count feed.
   // the handleMessage function (defined below)
@@ -46,10 +50,10 @@ void setup() {
   // wait for an MQTT connection
   // NOTE: when blending the HTTP and MQTT API, always use the mqttStatus
   // method to check on MQTT connection status specifically
-//  while(io.mqttStatus() < AIO_CONNECTED) {
-//    Serial.print(".");
-//    delay(500);
-//  }
+  while(io.mqttStatus() < AIO_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
 
   // Because Adafruit IO doesn't support the MQTT retain flag, we can use the
   // get() function to ask IO to resend the last value for this feed to just
@@ -58,11 +62,19 @@ void setup() {
 //
 //  // we are connected
   Serial.println();
-//  Serial.println(io.statusText());
+  io.setLEDs(255,0,0);
+
+  //  Serial.println(io.statusText());
 
 }
 
 void loop() {
+
+	digitalWrite(13, HIGH);
+	delay(500);
+	digitalWrite(13, LOW);
+	delay(500);
+
 
   // io.run(); is required for all sketches.
   // it should always be present at the top of your loop
